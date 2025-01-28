@@ -1,3 +1,12 @@
+# LeRF with finetuned CLIP
+
+Repository Forked from https://github.com/kerrj/lerf
+
+Using a Finetuned CLIP ViT-16/B Model to compare to Feature-Splatting, a Mask R-CNN Model and a combination out of ResNet50 and SAM.
+
+Thesis Project.
+
+
 # LERF: Language Embedded Radiance Fields
 This is the official implementation for [LERF](https://lerf.io).
 
