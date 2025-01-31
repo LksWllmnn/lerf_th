@@ -145,6 +145,7 @@ lerf_method_lite = MethodSpecification(
                 hashgrid_resolutions=((16, 512),),
                 num_lerf_samples=12,
             ),
+            #LW: Changed from OpenCLIP to CLIPNetworkConfig
             network=OpenCLIPNetworkConfig(
                 clip_model_type="ViT-B-16", clip_model_pretrained="laion2b_s34b_b88k", clip_n_dims=512
             ),

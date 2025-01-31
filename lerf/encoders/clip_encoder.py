@@ -34,12 +34,24 @@ class CLIPNetwork(BaseImageEncoder):
             ]
         )
         model, _ = clip.load(self.config.clip_model_type)
+
+        #LW: Added own models
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
+        #surround
+        #model.load_state_dict(torch.load(r"", map_location=device))
+        
+        #scene
+        #model.load_state_dict(torch.load(r"", map_location=device))
+        
+        #big-surround
+        #model.load_state_dict(torch.load(r"", map_location=device))
+        
         model.eval()
         self.tokenizer = clip.tokenize
         self.model = model.to("cuda")
         self.clip_n_dims = self.config.clip_n_dims
 
-        self.positives = ["hand sanitizer"]
+        self.positives = [""] #LW: A - Z-Building with ns-render command
         self.negatives = self.config.negatives
         with torch.no_grad():
             tok_phrases = torch.cat([self.tokenizer(phrase) for phrase in self.positives]).to("cuda")

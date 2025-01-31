@@ -197,6 +197,10 @@ class LERFModel(NerfactoModel):
             outputs[f"composited_{i}"] = apply_colormap(p_i / (p_i.max() + 1e-6), ColormapOptions("turbo"))
             mask = (outputs["relevancy_0"] < 0.5).squeeze()
             outputs[f"composited_{i}"][mask, :] = outputs["rgb"][mask, :]
+        
+            #LW: Added own render type with just masks to evaluate
+            outputs["my_output"] = apply_colormap(p_i / (p_i.max() + 1e-6), ColormapOptions("turbo"))
+            outputs["my_output"][mask, :] = 0
         return outputs
 
     def _get_outputs_nerfacto(self, ray_samples: RaySamples):
