@@ -28,6 +28,28 @@ ns-render camera-path --load-config [path to the trained configuration json-File
 To create just the masks use the ```my_output``` --rendered-output-names. To create the composit between rgb and masks use ```composited_0```.
 
 
+## Use created Scenes from thesis
+To use the created Scenes download the lef-lite-data from [here](https://bwsyncandshare.kit.edu/s/qTZ3NamgqGTPxk4). 
+Make sure that the folder has been saved under this path: ```F:\Study\Master\Thesis\data\perception\usefull_data``` or change the config.yml files to customize the project dates for nerfstudio.
+
+The Big-Surround finetuned Scene can be used with this command:
+```
+ns-viewer --load-config "F:\Studium\Master\Thesis\data\perception\usefull_data\lerf-lite-data\outputs\lerf-lite-data\lerf-lite\2024-12-30_212656\config.yml"
+```
+
+The Scene finetuned Scene can be used with this command:
+
+```
+ns-viewer --load-config "F:\Studium\Master\Thesis\data\perception\usefull_data\lerf-lite-data\outputs\lerf-lite-data\lerf-lite\2024-12-30_183246\config.yml"
+```
+
+The Surround finetuned Scene can be used with this command:
+```
+ns-viewer --load-config "F:\Studium\Master\Thesis\data\perception\usefull_data\lerf-lite-data\outputs\lerf-lite-data\lerf-lite\2024-12-30_113237\config.yml"
+```
+
+Make shure to save the fitting finetuned CLIP Model for the specific Scene.
+
 
 # LERF: Language Embedded Radiance Fields
 This is the official implementation for [LERF](https://lerf.io).
