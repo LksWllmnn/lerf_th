@@ -4,7 +4,29 @@ Repository Forked from https://github.com/kerrj/lerf
 
 Using a Finetuned CLIP ViT-16/B Model to compare to Feature-Splatting, a Mask R-CNN Model and a combination out of ResNet50 and SAM.
 
-Thesis Project.
+## Include CLIP-Model
+The CLIP-Model (which can be finetuned with the [finetune an eval repository](https://github.com/LksWllmnn/finetune_eval_th) or a pre-finetuned Model [from here](https://bwsyncandshare.kit.edu/s/WKsJY3EdDQcX7kK)) can be included in line 41 in the script [clip_encoder.py](./lerf/encoders/clip_encoder.py)
+
+## Prepare Model
+The data can be prepared with this command:
+```
+ns-process-data --data [Path to Scen images] --output-dir [path where to put the nerfstudio transform.json] --skip-colmap --colmap-model-path [path to the Colmap infos] --skip-image-processing
+```
+
+## Train Model
+The Model can be trained with the following commands:
+```
+ns-train lerf-lite --data [path to the nerfstudio transform.json] --pipeline.model.camera-optimizer.mode off nerfstudio-data --orientation-method none --center-method none
+```
+
+## Render the results
+To render the results with a CLIP-Poitiv and with a specific Renderer you have to change line 48 in the script [clip_encoder.py](./lerf/encoders/clip_encoder.py) and use the following command:
+```
+ns-render camera-path --load-config [path to the trained configuration json-File of the NeRF] --camera-path-filename [Path to the created camerapath.json] --rendered-output-names [my_output or composited_0]  --output-format images --output-path [path where the images should be saved]
+```
+
+To create just the masks use the ```my_output``` --rendered-output-names. To create the composit between rgb and masks use ```composited_0```.
+
 
 
 # LERF: Language Embedded Radiance Fields

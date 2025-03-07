@@ -37,14 +37,8 @@ class CLIPNetwork(BaseImageEncoder):
 
         #LW: Added own models
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
-        #surround
-        #model.load_state_dict(torch.load(r"", map_location=device))
         
-        #scene
-        #model.load_state_dict(torch.load(r"", map_location=device))
-        
-        #big-surround
-        #model.load_state_dict(torch.load(r"", map_location=device))
+        model.load_state_dict(torch.load(r"", map_location=device))
         
         model.eval()
         self.tokenizer = clip.tokenize
